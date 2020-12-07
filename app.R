@@ -38,6 +38,8 @@ ui <- dashboardPage(
         #Choix de la date
         selectInput("date","Choix de la date",choices=unique(data$date),selected = '2020-11-26'),
         
+ 
+        
         ##action button 
         #actionButton(inputId = 'action','Lancer l analyse'),
         
@@ -63,7 +65,12 @@ ui <- dashboardPage(
             #Premier onglet : mon departement
           
             
-            tabItem('situation')),
+            tabItem('situation')
+            
+            
+            
+            
+            ),
             
             
             
@@ -96,6 +103,9 @@ ui <- dashboardPage(
     )
 
 server <- function(input, output){
+
+  
+
     
     output$downloadData <- downloadHandler(
         filename = function() {
@@ -109,9 +119,10 @@ server <- function(input, output){
     
     
     output$valuebox1<-renderValueBox({
-        ####choisir le departement 
-        valueBox(value=paste(sum(data$hospitalises)),"Hospitalisés",
-                 icon = icon("list"),color = "blue")
+      hospitalises=data%>%filter(data$nom==input$departement & data$date==input$date)
+      
+      valueBox(value=paste(hospitalises$hospitalises),"Hospitalisés",
+                 icon = icon("stethoscope"),color = "blue")
         
         
     }
