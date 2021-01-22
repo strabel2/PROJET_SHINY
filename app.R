@@ -16,7 +16,7 @@ endpoint="Departement"
 library(jsonlite)
 stock=c("Rhône","Doubs","Bas-Rhin")
 
-for (i in 1:3){
+
   #url[i]=c(paste(base,endpoint,"=",stock[i],sep=""),paste(base,endpoint,"=",stock[i],sep=""),paste(base,endpoint,"=",stock[i],sep=""))
   url=c(paste(base,endpoint,"=",stock[1],sep=""),paste(base,endpoint,"=",stock[2],sep=""),paste(base,endpoint,"=",stock[3],sep=""))
   #print(url[i])
@@ -27,7 +27,7 @@ for (i in 1:3){
   ##data=book_data$allDataByDepartement
   data2=bind_rows(data[[1]],data[[2]],data[[3]])
   
-}
+
 data2=as.data.frame(data2)
 
 
@@ -246,7 +246,7 @@ server <- function(input, output, session){
   output$valuebox1<-renderValueBox({
     hospitalises=data2%>%filter(data2$date==input$date & data2$nom==input$departement)
     
-    valueBox(value=paste(hospitalises$hospitalises),"Hospitalisés",
+    valueBox(value=max(paste(hospitalises$hospitalises)),"Hospitalisés",
              icon = icon("stethoscope"),color = "blue")
     
     
@@ -255,7 +255,7 @@ server <- function(input, output, session){
   output$valuebox2<-renderValueBox({
     hospitalises=data2%>%filter(data2$date==input$date & data2$nom==input$departement)
     
-    valueBox(value=paste(hospitalises$casConfirmes),"Cas Confirmés",
+    valueBox(value=max(paste(hospitalises$casConfirmes)),"Cas Confirmés",
              icon = icon("stethoscope"),color = "purple")
     
     
@@ -264,7 +264,7 @@ server <- function(input, output, session){
   output$valuebox3<-renderValueBox({
     hospitalises=data2%>%filter(data2$date==input$date & data2$nom==input$departement)
     
-    valueBox(value=paste(hospitalises$nouvellesReanimations),"Nouvelles Réanimations",
+    valueBox(value=max(paste(hospitalises$nouvellesReanimations)),"Nouvelles Réanimations",
              icon = icon("stethoscope"),color = "orange")
     
     
