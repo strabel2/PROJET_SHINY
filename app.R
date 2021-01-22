@@ -163,7 +163,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=gueris)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -174,7 +174,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=casConfirmes)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -185,7 +185,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=deces)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -196,7 +196,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=reanimation)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -207,7 +207,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=hospitalises)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -218,7 +218,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=nouvellesHospitalisations)) + 
-        geom_point(color="blue")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="blue")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
@@ -229,7 +229,7 @@ server <- function(input, output, session){
       d=data2%>%filter(data2$date <=input$date_fin & data2$date >=input$date_debut & data2$nom==input$departement)
       Date=as.Date(d$date)
       df=ggplot(d, aes(x=Date, y=nouvellesReanimations)) + 
-        geom_point(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
+        geom_line(color="magenta")+scale_x_date(date_labels = "%Y %b %d")
       out=ggplotly(df)
       out
       
